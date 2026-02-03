@@ -6,6 +6,7 @@ Allows users to submit feedback with a rating and comments.
 
 import json
 import os
+import uuid
 from datetime import datetime
 from typing import Dict, List
 
@@ -78,9 +79,8 @@ class FeedbackSystem:
         return total_rating / len(feedbacks)
     
     def _generate_id(self) -> str:
-        """Generate a unique ID for feedback entry."""
-        feedbacks = self._load_feedbacks()
-        return str(len(feedbacks) + 1)
+        """Generate a unique ID for feedback entry using UUID."""
+        return str(uuid.uuid4())
     
     def _load_feedbacks(self) -> List[Dict]:
         """Load feedbacks from storage file."""
